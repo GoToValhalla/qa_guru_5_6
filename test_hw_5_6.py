@@ -32,6 +32,7 @@ def test_find_suitable_user():
     """
     Найдите нужного пользователя по условиям в списке пользователей
     """
+    global suitable_users
     users = [
         {"name": "Oleg", "age": 32},
         {"name": "Sergey", "age": 24},
@@ -40,14 +41,21 @@ def test_find_suitable_user():
         {"name": "Maria", "age": 18},
     ]
     # TODO найдите пользователя с именем "Olga"
-    suitable_users = None
+    for user in users:
+        if user['name'] == 'Olga':
+            suitable_users = user
     assert suitable_users == {"name": "Olga", "age": 45}
+
+    print(suitable_users)
+
     # TODO найдите всех пользователей младше 20 лет
-    suitable_users = None
+    suitable_users = [user for user in users  if user ['age'] < 20]
     assert suitable_users == [
         {"name": "Stanislav", "age": 15},
         {"name": "Maria", "age": 18},
     ]
+
+    print(suitable_users)
 
 # Сделайте функцию, которая будет печатать
 # читаемое имя переданной ей функции и значений аргументов.
